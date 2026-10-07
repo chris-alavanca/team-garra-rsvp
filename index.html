@@ -3,6 +3,7 @@
 <head>
 <meta charset="UTF-8" />
 <meta name="viewport" content="width=device-width, initial-scale=1" />
+<meta name="theme-color" content="#0b0b0c" />
 <title>Team Garra MMA — ¿Quién viene?</title>
 <meta name="description" content="Apúntate a los entrenamientos de Team Garra MMA en Duke Gym, Costa Adeje." />
 <link rel="preconnect" href="https://fonts.googleapis.com">
@@ -34,7 +35,6 @@
     min-height: 100vh;
     display: flex;
     flex-direction: column;
-    padding-bottom: 96px;
   }
 
   a { color: inherit; }
@@ -45,6 +45,8 @@
     outline: 2px solid var(--accent);
     outline-offset: 2px;
   }
+
+  button { font-family: "Work Sans", sans-serif; }
 
   header {
     position: relative;
@@ -81,9 +83,7 @@
     text-transform: uppercase;
   }
 
-  h1 span {
-    color: var(--accent);
-  }
+  h1 span { color: var(--accent); }
 
   .sub {
     margin: 16px 0 0;
@@ -103,6 +103,158 @@
     padding: 8px 24px 24px;
   }
 
+  .loading { color: var(--muted); font-size: 14px; padding: 28px 0; }
+
+  /* ---------- Forms (sign-in, name) ---------- */
+  .panel { padding: 32px 0 8px; }
+
+  .panel h2, .section-title {
+    font-family: "Anton", sans-serif;
+    font-weight: 400;
+    font-size: 26px;
+    text-transform: uppercase;
+    margin: 0 0 8px;
+  }
+
+  .panel p {
+    color: var(--muted);
+    font-size: 15px;
+    line-height: 1.5;
+    margin: 0 0 20px;
+    max-width: 460px;
+  }
+
+  .panel p strong { color: var(--text); font-weight: 600; }
+
+  .row-form {
+    display: flex;
+    gap: 10px;
+    flex-wrap: wrap;
+  }
+
+  .row-form input {
+    flex: 1 1 200px;
+    min-width: 0;
+    background: var(--surface);
+    border: 1px solid var(--line);
+    color: var(--text);
+    font-family: "Work Sans", sans-serif;
+    font-size: 16px;
+    padding: 12px 14px;
+    border-radius: var(--radius);
+  }
+
+  .row-form input::placeholder { color: var(--muted); }
+
+  .btn {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    gap: 8px;
+    background: transparent;
+    border: 1px solid var(--line);
+    color: var(--text);
+    font-weight: 600;
+    font-size: 14px;
+    padding: 11px 16px;
+    border-radius: var(--radius);
+    cursor: pointer;
+    white-space: nowrap;
+  }
+
+  .btn:hover { border-color: var(--accent); }
+
+  .btn-primary {
+    background: var(--accent);
+    border-color: var(--accent);
+  }
+
+  .btn-primary:hover { background: #b9141f; border-color: #b9141f; }
+
+  .btn:disabled { opacity: 0.5; cursor: default; }
+
+  .btn-small { font-size: 13px; padding: 7px 12px; }
+
+  .linkbtn {
+    background: none;
+    border: none;
+    color: var(--muted);
+    font-size: 13px;
+    text-decoration: underline;
+    cursor: pointer;
+    padding: 0;
+  }
+
+  .linkbtn:hover { color: var(--text); }
+
+  .panel .linkbtn { margin-top: 18px; }
+
+  /* ---------- Student payment strip ---------- */
+  .pay {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 16px;
+    padding: 22px 0;
+    border-bottom: 1px solid var(--line);
+  }
+
+  .pay-title {
+    font-family: "Anton", sans-serif;
+    font-size: 20px;
+    text-transform: uppercase;
+  }
+
+  .pay-status {
+    font-size: 13px;
+    color: var(--muted);
+    margin-top: 4px;
+    line-height: 1.4;
+  }
+
+  .pay.confirmed .pay-status { color: var(--text); }
+  .pay.confirmed .pay-status::before { content: "✓ "; color: var(--accent); font-weight: 700; }
+
+  /* ---------- Coach tabs ---------- */
+  .tabs {
+    display: flex;
+    gap: 28px;
+    border-bottom: 1px solid var(--line);
+  }
+
+  .tab {
+    background: none;
+    border: none;
+    border-bottom: 2px solid transparent;
+    color: var(--muted);
+    font-family: "Anton", sans-serif;
+    font-size: 20px;
+    text-transform: uppercase;
+    padding: 18px 0 12px;
+    cursor: pointer;
+    display: inline-flex;
+    align-items: center;
+    gap: 8px;
+  }
+
+  .tab.active { color: var(--text); border-bottom-color: var(--accent); }
+
+  .badge {
+    font-family: "Work Sans", sans-serif;
+    font-size: 12px;
+    font-weight: 700;
+    background: var(--accent);
+    color: var(--text);
+    border-radius: 999px;
+    min-width: 20px;
+    height: 20px;
+    padding: 0 6px;
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+  }
+
+  /* ---------- Sessions ---------- */
   .session {
     display: grid;
     grid-template-columns: 96px 1fr;
@@ -110,8 +262,6 @@
     padding: 28px 0;
     border-bottom: 1px solid var(--line);
   }
-
-  .session:last-child { border-bottom: none; }
 
   .session .when {
     display: flex;
@@ -126,16 +276,12 @@
     text-transform: uppercase;
   }
 
-  .session .date {
+  .session .date, .session .time {
     font-size: 13px;
     color: var(--muted);
   }
 
-  .session .time {
-    font-size: 13px;
-    color: var(--muted);
-    margin-top: 6px;
-  }
+  .session .time { margin-top: 6px; }
 
   .session.today .day { color: var(--accent); }
 
@@ -149,7 +295,6 @@
   .chip {
     display: inline-flex;
     align-items: center;
-    gap: 6px;
     background: var(--surface);
     border: 1px solid var(--line);
     border-radius: var(--radius);
@@ -157,132 +302,155 @@
     font-size: 13px;
   }
 
-  .chip button {
-    background: none;
-    border: none;
-    color: var(--muted);
-    font-size: 14px;
-    line-height: 1;
-    cursor: pointer;
-    padding: 0;
-  }
-
-  .chip button:hover { color: var(--accent); }
+  .chip.me { border-color: var(--accent); }
 
   .empty-state {
     color: var(--muted);
     font-size: 13px;
-    font-style: normal;
   }
 
   .go-btn {
     margin-top: 12px;
-    display: inline-flex;
-    align-items: center;
-    gap: 8px;
     background: transparent;
     border: 1px solid var(--line);
     color: var(--text);
-    font-family: "Work Sans", sans-serif;
     font-weight: 600;
     font-size: 13px;
     padding: 8px 14px;
     border-radius: var(--radius);
     cursor: pointer;
-    transition: border-color 0.15s ease, background 0.15s ease;
   }
 
-  .go-btn:hover {
-    border-color: var(--accent);
-    background: rgba(216, 30, 44, 0.08);
-  }
+  .go-btn:hover { border-color: var(--accent); background: rgba(216, 30, 44, 0.08); }
+  .go-btn.joined { border-color: var(--accent); background: rgba(216, 30, 44, 0.12); }
 
-  .go-btn.joined {
-    border-color: var(--accent);
-    background: rgba(216, 30, 44, 0.12);
-  }
+  details.past { border-bottom: 1px solid var(--line); }
 
-  .namebar {
-    position: fixed;
-    bottom: 0;
-    left: 0;
-    right: 0;
-    background: var(--surface);
-    border-top: 1px solid var(--line);
-    padding: 14px 20px calc(14px + env(safe-area-inset-bottom, 0px));
-    display: flex;
-    gap: 10px;
-    align-items: center;
-    justify-content: center;
-  }
-
-  .namebar-inner {
-    display: flex;
-    gap: 10px;
-    width: 100%;
-    max-width: 640px;
-  }
-
-  .namebar input {
-    flex: 1;
-    background: var(--bg);
-    border: 1px solid var(--line);
-    color: var(--text);
-    font-family: "Work Sans", sans-serif;
-    font-size: 15px;
-    padding: 11px 14px;
-    border-radius: var(--radius);
-  }
-
-  .namebar input::placeholder { color: var(--muted); }
-
-  .namebar .status {
-    font-size: 12px;
-    color: var(--muted);
-    white-space: nowrap;
-    align-self: center;
-  }
-
-  .namebar .edit-link {
-    background: none;
-    border: none;
-    color: var(--muted);
-    font-size: 12px;
-    text-decoration: underline;
+  details.past summary {
     cursor: pointer;
-    padding: 0;
-  }
-
-  footer {
-    text-align: center;
+    font-family: "Anton", sans-serif;
+    font-size: 18px;
+    text-transform: uppercase;
     color: var(--muted);
-    font-size: 12px;
-    padding: 24px;
+    padding: 22px 0;
+    list-style-position: inside;
   }
 
-  @media (prefers-reduced-motion: no-preference) {
-    .session { animation: rise 420ms ease both; }
-    .session:nth-child(1) { animation-delay: 0ms; }
-    .session:nth-child(2) { animation-delay: 40ms; }
-    .session:nth-child(3) { animation-delay: 80ms; }
-    .session:nth-child(4) { animation-delay: 120ms; }
-    .session:nth-child(5) { animation-delay: 160ms; }
+  details.past .session { opacity: 0.7; }
+  details.past .session:last-child { border-bottom: none; }
+
+  /* ---------- Coach payments ---------- */
+  .month-switch {
+    display: flex;
+    gap: 8px;
+    padding: 22px 0 6px;
   }
 
-  @keyframes rise {
-    from { opacity: 0; transform: translateY(8px); }
-    to { opacity: 1; transform: translateY(0); }
+  .month-switch .btn { text-transform: capitalize; }
+  .month-switch .btn.active { border-color: var(--accent); background: rgba(216, 30, 44, 0.12); }
+
+  .member {
+    display: grid;
+    grid-template-columns: 1fr auto;
+    align-items: center;
+    gap: 12px;
+    padding: 14px 0;
+    border-bottom: 1px solid var(--line);
+  }
+
+  .member-name { font-size: 15px; font-weight: 500; }
+
+  .member-status { font-size: 13px; color: var(--muted); margin-top: 2px; }
+  .member-status.claimed { color: var(--accent); font-weight: 600; }
+  .member-status.confirmed { color: var(--text); }
+
+  .member-actions { display: flex; gap: 8px; }
+
+  .counts { margin-top: 36px; }
+
+  .counts table {
+    width: 100%;
+    border-collapse: collapse;
+    font-size: 14px;
+  }
+
+  .counts td {
+    padding: 9px 0;
+    border-bottom: 1px solid var(--line);
+  }
+
+  .counts td:first-child { text-transform: capitalize; }
+
+  .counts td.num {
+    text-align: right;
+    font-variant-numeric: tabular-nums;
+    font-weight: 600;
+  }
+
+  .counts tr.zero td { color: var(--muted); font-weight: 400; }
+
+  /* ---------- Footer, privacy, toast ---------- */
+  footer {
+    max-width: 640px;
+    width: 100%;
+    margin: 0 auto;
+    padding: 32px 24px calc(32px + env(safe-area-inset-bottom, 0px));
+    color: var(--muted);
+    font-size: 13px;
+    line-height: 1.5;
+  }
+
+  .account {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 6px 16px;
+    align-items: center;
+    margin-bottom: 18px;
+  }
+
+  .account strong { color: var(--text); font-weight: 600; }
+
+  footer details summary { cursor: pointer; text-decoration: underline; }
+
+  .privacy { margin-top: 10px; }
+  .privacy p { margin: 0 0 10px; }
+  .privacy strong { color: var(--text); font-weight: 600; }
+
+  .made { margin-top: 18px; }
+
+  .toast {
+    position: fixed;
+    left: 50%;
+    bottom: calc(20px + env(safe-area-inset-bottom, 0px));
+    transform: translateX(-50%);
+    max-width: calc(100% - 40px);
+    background: var(--surface);
+    border: 1px solid var(--accent);
+    color: var(--text);
+    font-size: 14px;
+    padding: 12px 16px;
+    border-radius: var(--radius);
+    opacity: 0;
+    pointer-events: none;
+    transition: opacity 0.2s ease;
+  }
+
+  .toast.show { opacity: 1; }
+
+  @media (prefers-reduced-motion: reduce) {
+    .toast { transition: none; }
   }
 
   @media (max-width: 480px) {
     .session { grid-template-columns: 1fr; gap: 10px; }
+    .pay { flex-direction: column; align-items: flex-start; }
   }
 </style>
 </head>
 <body>
 
 <header>
-  <svg class="claw-marks" viewBox="0 0 220 220" fill="none" xmlns="http://www.w3.org/2000/svg">
+  <svg class="claw-marks" viewBox="0 0 220 220" fill="none" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
     <path d="M190 10 L70 200" stroke="#d81e2c" stroke-width="6" stroke-linecap="round" opacity="0.9"/>
     <path d="M165 0 L50 190" stroke="#d81e2c" stroke-width="6" stroke-linecap="round" opacity="0.55"/>
     <path d="M140 -5 L35 175" stroke="#d81e2c" stroke-width="6" stroke-linecap="round" opacity="0.3"/>
@@ -292,17 +460,13 @@
   <p class="sub">Marca los entrenos a los que vas esta semana. <strong>Carlos</strong> ve la lista al momento — nada de grupos de WhatsApp perdidos.</p>
 </header>
 
-<main id="sessions">
-  <!-- sessions injected here -->
+<main id="app">
+  <p class="loading">Cargando…</p>
 </main>
 
-<div class="namebar">
-  <div class="namebar-inner" id="namebar-inner">
-    <input id="name-input" type="text" placeholder="Tu nombre" autocomplete="name" maxlength="40" />
-  </div>
-</div>
+<footer id="foot"></footer>
 
-<footer>Hecho para Team Garra MMA</footer>
+<div id="toast" class="toast" role="status" aria-live="polite"></div>
 
 <script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2/dist/umd/supabase.min.js"></script>
 <script>
@@ -311,177 +475,548 @@
 
   var SUPABASE_URL = "https://wstkqkqhtguvynugwivu.supabase.co";
   var SUPABASE_KEY = "sb_publishable_urm3EVAbdarocXd8sq-y6g_kjxP4_ir";
-  var sb = supabase.createClient(SUPABASE_URL, SUPABASE_KEY);
+  var sb = supabase.createClient(SUPABASE_URL, SUPABASE_KEY, {
+    auth: { flowType: "implicit", persistSession: true, autoRefreshToken: true, detectSessionInUrl: true }
+  });
 
-  var SCHEDULE = [
-    { weekday: 1, label: "Lunes", time: "18:00 – 19:30" },
-    { weekday: 2, label: "Martes", time: "19:30 – 21:00" },
-    { weekday: 3, label: "Miércoles", time: "18:00 – 19:30" },
-    { weekday: 4, label: "Jueves", time: "19:30 – 21:00" },
-    { weekday: 5, label: "Viernes", time: "18:00 – 19:30" }
-  ];
+  // ---------- Dates (always Canary time, matching the database rules) ----------
+  var TZ = "Atlantic/Canary";
+  var SCHEDULE = {
+    1: { label: "Lunes", time: "18:00 – 19:30" },
+    2: { label: "Martes", time: "19:30 – 21:00" },
+    3: { label: "Miércoles", time: "18:00 – 19:30" },
+    4: { label: "Jueves", time: "19:30 – 21:00" },
+    5: { label: "Viernes", time: "18:00 – 19:30" }
+  };
+  var ISO_FMT = new Intl.DateTimeFormat("en-CA", { timeZone: TZ, year: "numeric", month: "2-digit", day: "2-digit" });
+  var DAY_FMT = new Intl.DateTimeFormat("es-ES", { timeZone: "UTC", day: "numeric", month: "short" });
+  var MONTH_FMT = new Intl.DateTimeFormat("es-ES", { timeZone: "UTC", month: "long" });
+  var MONTH_YEAR_FMT = new Intl.DateTimeFormat("es-ES", { timeZone: "UTC", month: "long", year: "numeric" });
 
-  var DATE_FMT = new Intl.DateTimeFormat("es-ES", { day: "numeric", month: "short" });
-
-  function toISODate(d) {
-    return d.getFullYear() + "-" + String(d.getMonth() + 1).padStart(2, "0") + "-" + String(d.getDate()).padStart(2, "0");
+  function todayISO() { return ISO_FMT.format(new Date()); }
+  function isoToDate(iso) { return new Date(iso + "T00:00:00Z"); }
+  function dateToISO(d) { return d.toISOString().slice(0, 10); }
+  function addDays(iso, n) { var d = isoToDate(iso); d.setUTCDate(d.getUTCDate() + n); return dateToISO(d); }
+  function monthISO(back) {
+    var t = isoToDate(todayISO());
+    return dateToISO(new Date(Date.UTC(t.getUTCFullYear(), t.getUTCMonth() - back, 1)));
   }
+  function monthName(iso) { return MONTH_FMT.format(isoToDate(iso)); }
 
-  function isSameDay(a, b) {
-    return a.getFullYear() === b.getFullYear() && a.getMonth() === b.getMonth() && a.getDate() === b.getDate();
-  }
-
-  function nextSessions(count) {
-    var today = new Date();
-    today.setHours(0, 0, 0, 0);
+  function sessionsBetween(startISO, endISO) {
     var out = [];
-    var cursor = new Date(today);
-    var guard = 0;
-    while (out.length < count && guard < 60) {
-      var match = SCHEDULE.find(function (s) { return s.weekday === cursor.getDay(); });
-      if (match) {
-        out.push({
-          date: new Date(cursor),
-          iso: toISODate(cursor),
-          label: match.label,
-          time: match.time,
-          isToday: isSameDay(cursor, today)
-        });
-      }
-      cursor.setDate(cursor.getDate() + 1);
-      guard++;
+    for (var iso = startISO; iso <= endISO; iso = addDays(iso, 1)) {
+      var s = SCHEDULE[isoToDate(iso).getUTCDay()];
+      if (s) out.push({ iso: iso, label: s.label, time: s.time });
     }
     return out;
   }
+  function upcomingSessions() { var t = todayISO(); return sessionsBetween(t, addDays(t, 8)).slice(0, 5); }
+  function pastSessions() { var t = todayISO(); return sessionsBetween(addDays(t, -7), addDays(t, -1)); }
 
-  var sessions = nextSessions(5);
+  // ---------- State ----------
+  var S = {
+    session: null, me: null, profiles: {}, rsvps: [], myPay: null, pays: [],
+    view: "sessions", payBack: 0, email: "", sent: false, busy: false
+  };
 
-  var mainEl = document.getElementById("sessions");
-  var nameInput = document.getElementById("name-input");
+  var app = document.getElementById("app");
+  var foot = document.getElementById("foot");
+  var toastEl = document.getElementById("toast");
 
-  function getStoredName() {
-    return (localStorage.getItem("garra_name") || "").trim();
-  }
-  function setStoredName(n) {
-    localStorage.setItem("garra_name", n);
-  }
-  nameInput.value = getStoredName();
-  nameInput.addEventListener("input", function () {
-    setStoredName(nameInput.value.trim());
-  });
+  function isCoach() { return !!(S.me && S.me.role === "coach"); }
 
-  var rsvpsBySession = {};
-
-  function render() {
-    mainEl.innerHTML = "";
-    var myName = getStoredName();
-
-    sessions.forEach(function (s) {
-      var wrap = document.createElement("div");
-      wrap.className = "session" + (s.isToday ? " today" : "");
-
-      var when = document.createElement("div");
-      when.className = "when";
-      when.innerHTML =
-        '<div class="day">' + s.label + (s.isToday ? " · hoy" : "") + '</div>' +
-        '<div class="date">' + DATE_FMT.format(s.date) + '</div>' +
-        '<div class="time">' + s.time + '</div>';
-      wrap.appendChild(when);
-
-      var right = document.createElement("div");
-
-      var attendees = document.createElement("div");
-      attendees.className = "attendees";
-      var names = rsvpsBySession[s.iso] || [];
-
-      if (names.length === 0) {
-        var empty = document.createElement("span");
-        empty.className = "empty-state";
-        empty.textContent = "Todavía nadie apuntado";
-        attendees.appendChild(empty);
-      } else {
-        names.forEach(function (n) {
-          var chip = document.createElement("span");
-          chip.className = "chip";
-          var isMe = myName && n.toLowerCase() === myName.toLowerCase();
-          chip.innerHTML = '<span>' + escapeHtml(n) + '</span>';
-          if (isMe) {
-            var rm = document.createElement("button");
-            rm.textContent = "✕";
-            rm.setAttribute("aria-label", "Quitarme de " + s.label);
-            rm.addEventListener("click", function () { leaveSession(s.iso); });
-            chip.appendChild(rm);
-          }
-          attendees.appendChild(chip);
-        });
-      }
-      right.appendChild(attendees);
-
-      var joined = myName && names.some(function (n) { return n.toLowerCase() === myName.toLowerCase(); });
-      var btn = document.createElement("button");
-      btn.className = "go-btn" + (joined ? " joined" : "");
-      btn.textContent = joined ? "✓ Voy" : "Voy a este";
-      btn.addEventListener("click", function () {
-        if (joined) { leaveSession(s.iso); } else { joinSession(s.iso); }
-      });
-      right.appendChild(btn);
-
-      wrap.appendChild(right);
-      mainEl.appendChild(wrap);
-    });
+  function el(tag, cls, text) {
+    var e = document.createElement(tag);
+    if (cls) e.className = cls;
+    if (text != null) e.textContent = text;
+    return e;
   }
 
-  function escapeHtml(str) {
-    var div = document.createElement("div");
-    div.textContent = str;
-    return div.innerHTML;
+  var toastTimer = null;
+  function toast(msg) {
+    toastEl.textContent = msg;
+    toastEl.classList.add("show");
+    clearTimeout(toastTimer);
+    toastTimer = setTimeout(function () { toastEl.classList.remove("show"); }, 4000);
   }
 
-  function joinSession(iso) {
-    var name = getStoredName();
-    if (!name) {
-      nameInput.focus();
-      nameInput.placeholder = "Escribe tu nombre primero";
+  function fail(err) {
+    console.error(err);
+    toast("No se ha guardado. Revisa tu conexión y vuelve a intentarlo.");
+  }
+
+  // ---------- Routing ----------
+  var routeSeq = 0;
+  async function route() {
+    var seq = ++routeSeq;
+    if (!S.session) {
+      S.me = null;
+      stopRealtime();
+      renderSignIn();
+      renderFoot();
       return;
     }
-    sb.from("rsvps").insert({ session_date: iso, name: name }).then(function (res) {
-      if (res.error && res.error.code !== "23505") {
-        console.error(res.error);
-        return;
-      }
-      loadData();
-    });
+    var res = await sb.from("profiles").select("id,display_name,role").eq("id", S.session.user.id).maybeSingle();
+    if (seq !== routeSeq) return;
+    if (res.error) { fail(res.error); return; }
+    if (!res.data) {
+      S.me = null;
+      renderNameForm();
+      renderFoot();
+      return;
+    }
+    S.me = res.data;
+    startRealtime();
+    await loadAll();
   }
 
-  function leaveSession(iso) {
-    var name = getStoredName();
-    if (!name) return;
-    sb.from("rsvps").delete().eq("session_date", iso).ilike("name", name).then(function (res) {
-      if (res.error) { console.error(res.error); return; }
-      loadData();
-    });
+  async function loadAll() {
+    if (!S.me) return;
+    var up = upcomingSessions();
+    var past = pastSessions();
+    var from = past.length ? past[0].iso : up[0].iso;
+    var to = up[up.length - 1].iso;
+
+    var queries = [
+      sb.from("profiles").select("id,display_name,role"),
+      sb.from("rsvps").select("session_date,user_id").gte("session_date", from).lte("session_date", to).order("created_at", { ascending: true })
+    ];
+    if (isCoach()) {
+      queries.push(sb.from("payments").select("user_id,month,status").gte("month", monthISO(11)));
+    } else {
+      queries.push(sb.from("payments").select("status").eq("user_id", S.me.id).eq("month", monthISO(0)).maybeSingle());
+    }
+
+    var r = await Promise.all(queries);
+    for (var i = 0; i < r.length; i++) { if (r[i].error) { fail(r[i].error); return; } }
+
+    S.profiles = {};
+    r[0].data.forEach(function (p) { S.profiles[p.id] = p; });
+    if (S.profiles[S.me.id]) S.me = S.profiles[S.me.id];
+    S.rsvps = r[1].data;
+    if (isCoach()) { S.pays = r[2].data; }
+    else { S.myPay = r[2].data ? r[2].data.status : null; }
+
+    renderApp();
+    renderFoot();
   }
 
-  function loadData() {
-    var isoList = sessions.map(function (s) { return s.iso; });
-    sb.from("rsvps").select("session_date,name").in("session_date", isoList).order("created_at", { ascending: true })
-      .then(function (res) {
-        if (res.error) { console.error(res.error); render(); return; }
-        rsvpsBySession = {};
-        (res.data || []).forEach(function (row) {
-          if (!rsvpsBySession[row.session_date]) rsvpsBySession[row.session_date] = [];
-          rsvpsBySession[row.session_date].push(row.name);
+  var reloadTimer = null;
+  function reloadSoon() {
+    clearTimeout(reloadTimer);
+    reloadTimer = setTimeout(loadAll, 300);
+  }
+
+  // ---------- Realtime (RSVPs only; payments are private) ----------
+  var channel = null;
+  function startRealtime() {
+    if (channel) return;
+    channel = sb.channel("rsvps-live")
+      .on("postgres_changes", { event: "*", schema: "public", table: "rsvps" }, reloadSoon)
+      .subscribe();
+  }
+  function stopRealtime() {
+    if (channel) { sb.removeChannel(channel); channel = null; }
+  }
+
+  // ---------- Sign in ----------
+  function authMessage(err) {
+    var m = (err && err.message) || "";
+    if (/not authorized/i.test(m)) return "Este email todavía no puede recibir el acceso.";
+    if (/security purposes|rate limit|too many/i.test(m)) return "Espera un minuto antes de pedir otro email.";
+    if (/expired|invalid/i.test(m)) return "El código no es válido o ha caducado. Pide otro email.";
+    return "No se ha podido completar: " + m;
+  }
+
+  function renderSignIn() {
+    app.innerHTML = "";
+    var p = el("section", "panel");
+
+    if (!S.sent) {
+      p.appendChild(el("h2", null, "Entra para apuntarte"));
+      p.appendChild(el("p", null, "Te mandamos un email para entrar. Solo hace falta la primera vez en este móvil."));
+      var form = el("form", "row-form");
+      var input = el("input");
+      input.type = "email";
+      input.required = true;
+      input.autocomplete = "email";
+      input.inputMode = "email";
+      input.placeholder = "tu@email.com";
+      input.setAttribute("aria-label", "Tu email");
+      input.value = S.email;
+      var btn = el("button", "btn btn-primary", "Enviarme el email");
+      btn.type = "submit";
+      form.appendChild(input);
+      form.appendChild(btn);
+      form.addEventListener("submit", async function (e) {
+        e.preventDefault();
+        var email = input.value.trim().toLowerCase();
+        if (!email) return;
+        btn.disabled = true;
+        var r = await sb.auth.signInWithOtp({
+          email: email,
+          options: { emailRedirectTo: location.origin + location.pathname, shouldCreateUser: true }
         });
-        render();
+        btn.disabled = false;
+        if (r.error) { toast(authMessage(r.error)); return; }
+        S.email = email;
+        S.sent = true;
+        renderSignIn();
       });
+      p.appendChild(form);
+    } else {
+      p.appendChild(el("h2", null, "Revisa tu email"));
+      var msg = el("p");
+      msg.appendChild(document.createTextNode("Te hemos enviado un email a "));
+      msg.appendChild(el("strong", null, S.email));
+      msg.appendChild(document.createTextNode(". Pulsa el enlace del email para entrar, o escribe aquí el código si el email trae uno."));
+      p.appendChild(msg);
+
+      var cform = el("form", "row-form");
+      var code = el("input");
+      code.type = "text";
+      code.inputMode = "numeric";
+      code.autocomplete = "one-time-code";
+      code.maxLength = 10;
+      code.placeholder = "Código";
+      code.setAttribute("aria-label", "Código del email");
+      var cbtn = el("button", "btn btn-primary", "Entrar");
+      cbtn.type = "submit";
+      cform.appendChild(code);
+      cform.appendChild(cbtn);
+      cform.addEventListener("submit", async function (e) {
+        e.preventDefault();
+        var token = code.value.replace(/\s/g, "");
+        if (!token) return;
+        cbtn.disabled = true;
+        var r = await sb.auth.verifyOtp({ email: S.email, token: token, type: "email" });
+        cbtn.disabled = false;
+        if (r.error) toast(authMessage(r.error));
+      });
+      p.appendChild(cform);
+
+      var back = el("button", "linkbtn", "Usar otro email");
+      back.type = "button";
+      back.addEventListener("click", function () { S.sent = false; renderSignIn(); });
+      p.appendChild(back);
+    }
+    app.appendChild(p);
   }
 
-  render();
-  loadData();
+  function renderNameForm() {
+    app.innerHTML = "";
+    var p = el("section", "panel");
+    p.appendChild(el("h2", null, "¿Cómo te llamas?"));
+    p.appendChild(el("p", null, "Así te verán tus compañeros en la lista de cada entreno."));
+    var form = el("form", "row-form");
+    var input = el("input");
+    input.type = "text";
+    input.required = true;
+    input.maxLength = 40;
+    input.autocomplete = "name";
+    input.placeholder = "Tu nombre";
+    input.setAttribute("aria-label", "Tu nombre");
+    var btn = el("button", "btn btn-primary", "Guardar");
+    btn.type = "submit";
+    form.appendChild(input);
+    form.appendChild(btn);
+    form.addEventListener("submit", async function (e) {
+      e.preventDefault();
+      var name = input.value.trim();
+      if (!name) return;
+      btn.disabled = true;
+      var r = await sb.from("profiles").insert({ id: S.session.user.id, display_name: name });
+      btn.disabled = false;
+      if (r.error) { fail(r.error); return; }
+      route();
+    });
+    p.appendChild(form);
+    app.appendChild(p);
+    input.focus();
+  }
 
-  sb.channel("rsvps-changes")
-    .on("postgres_changes", { event: "*", schema: "public", table: "rsvps" }, function () { loadData(); })
-    .subscribe();
+  // ---------- Main app ----------
+  function renderApp() {
+    app.innerHTML = "";
+    if (isCoach()) {
+      app.appendChild(renderTabs());
+      app.appendChild(S.view === "payments" ? renderPayments() : renderSessions());
+    } else {
+      app.appendChild(renderPayStrip());
+      app.appendChild(renderSessions());
+    }
+  }
+
+  function renderTabs() {
+    var cur = monthISO(0), prev = monthISO(1);
+    var pending = S.pays.filter(function (p) {
+      return p.status === "claimed" && (p.month === cur || p.month === prev);
+    }).length;
+
+    var nav = el("nav", "tabs");
+    nav.setAttribute("aria-label", "Secciones");
+    [["sessions", "Entrenos"], ["payments", "Cuotas"]].forEach(function (t) {
+      var b = el("button", "tab" + (S.view === t[0] ? " active" : ""), t[1]);
+      b.type = "button";
+      if (S.view === t[0]) b.setAttribute("aria-current", "page");
+      if (t[0] === "payments" && pending > 0) {
+        var badge = el("span", "badge", String(pending));
+        badge.setAttribute("aria-label", pending + " avisos de pago pendientes");
+        b.appendChild(badge);
+      }
+      b.addEventListener("click", function () { S.view = t[0]; loadAll(); });
+      nav.appendChild(b);
+    });
+    return nav;
+  }
+
+  function nameOf(uid) {
+    var p = S.profiles[uid];
+    return p ? p.display_name : "—";
+  }
+
+  function sessionRow(s, active) {
+    var today = todayISO();
+    var wrap = el("div", "session" + (s.iso === today ? " today" : ""));
+
+    var when = el("div", "when");
+    when.appendChild(el("div", "day", s.label + (s.iso === today ? " · hoy" : "")));
+    when.appendChild(el("div", "date", DAY_FMT.format(isoToDate(s.iso))));
+    when.appendChild(el("div", "time", s.time));
+    wrap.appendChild(when);
+
+    var right = el("div");
+    var attendees = el("div", "attendees");
+    var going = S.rsvps.filter(function (r) { return r.session_date === s.iso; });
+    if (going.length === 0) {
+      attendees.appendChild(el("span", "empty-state", active ? "Todavía nadie apuntado" : "Nadie se apuntó"));
+    } else {
+      going.forEach(function (r) {
+        attendees.appendChild(el("span", "chip" + (r.user_id === S.me.id ? " me" : ""), nameOf(r.user_id)));
+      });
+    }
+    right.appendChild(attendees);
+
+    if (active) {
+      var joined = going.some(function (r) { return r.user_id === S.me.id; });
+      var btn = el("button", "go-btn" + (joined ? " joined" : ""), joined ? "✓ Voy" : "Voy a este");
+      btn.type = "button";
+      btn.setAttribute("aria-pressed", joined ? "true" : "false");
+      btn.addEventListener("click", function () { toggleRsvp(s.iso, joined, btn); });
+      right.appendChild(btn);
+    }
+    wrap.appendChild(right);
+    return wrap;
+  }
+
+  function renderSessions() {
+    var wrap = el("div", "sessions");
+    upcomingSessions().forEach(function (s) { wrap.appendChild(sessionRow(s, true)); });
+
+    var past = pastSessions();
+    if (past.length) {
+      var d = el("details", "past");
+      d.appendChild(el("summary", null, "Semana pasada"));
+      past.slice().reverse().forEach(function (s) { d.appendChild(sessionRow(s, false)); });
+      wrap.appendChild(d);
+    }
+    return wrap;
+  }
+
+  async function toggleRsvp(iso, joined, btn) {
+    if (S.busy) return;
+    S.busy = true;
+    btn.disabled = true;
+    var r = joined
+      ? await sb.from("rsvps").delete().eq("session_date", iso).eq("user_id", S.me.id)
+      : await sb.from("rsvps").insert({ session_date: iso });
+    S.busy = false;
+    if (r.error && r.error.code !== "23505") { fail(r.error); btn.disabled = false; return; }
+    await loadAll();
+  }
+
+  // ---------- Student: monthly fee ----------
+  function renderPayStrip() {
+    var month = monthISO(0);
+    var status = S.myPay;
+    var box = el("section", "pay" + (status === "confirmed" ? " confirmed" : ""));
+    box.setAttribute("aria-label", "Cuota del mes");
+
+    var info = el("div");
+    info.appendChild(el("div", "pay-title", "Cuota de " + monthName(month)));
+    var text = status === "confirmed" ? "Pagada. Carlos la ha confirmado."
+      : status === "claimed" ? "Has avisado de que has pagado. Falta que Carlos lo confirme."
+      : "Cuando pagues a Carlos, avisa aquí.";
+    info.appendChild(el("div", "pay-status", text));
+    box.appendChild(info);
+
+    if (status !== "confirmed") {
+      var btn = el("button", status === "claimed" ? "btn btn-small" : "btn btn-primary", status === "claimed" ? "Deshacer aviso" : "Ya he pagado");
+      btn.type = "button";
+      btn.addEventListener("click", async function () {
+        btn.disabled = true;
+        var r = status === "claimed"
+          ? await sb.from("payments").delete().eq("user_id", S.me.id).eq("month", month)
+          : await sb.from("payments").insert({ user_id: S.me.id, month: month, status: "claimed" });
+        if (r.error && r.error.code !== "23505") { fail(r.error); btn.disabled = false; return; }
+        await loadAll();
+      });
+      box.appendChild(btn);
+    }
+    return box;
+  }
+
+  // ---------- Coach: payments ----------
+  var STATUS_LABEL = { none: "Sin pagar", claimed: "Dice que ha pagado", confirmed: "Pagado" };
+  var STATUS_ORDER = { claimed: 0, none: 1, confirmed: 2 };
+
+  function payStatus(uid, month) {
+    var p = S.pays.find(function (x) { return x.user_id === uid && x.month === month; });
+    return p ? p.status : "none";
+  }
+
+  function renderPayments() {
+    var month = monthISO(S.payBack);
+    var wrap = el("div", "payments");
+
+    var sw = el("div", "month-switch");
+    [0, 1].forEach(function (back) {
+      var b = el("button", "btn btn-small" + (S.payBack === back ? " active" : ""), monthName(monthISO(back)));
+      b.type = "button";
+      b.setAttribute("aria-pressed", S.payBack === back ? "true" : "false");
+      b.addEventListener("click", function () { S.payBack = back; renderApp(); });
+      sw.appendChild(b);
+    });
+    wrap.appendChild(sw);
+
+    var members = Object.keys(S.profiles)
+      .map(function (id) { return S.profiles[id]; })
+      .filter(function (p) { return p.role !== "coach"; })
+      .map(function (p) { return { id: p.id, name: p.display_name, status: payStatus(p.id, month) }; })
+      .sort(function (a, b) {
+        return (STATUS_ORDER[a.status] - STATUS_ORDER[b.status]) || a.name.localeCompare(b.name, "es");
+      });
+
+    if (members.length === 0) {
+      wrap.appendChild(el("p", "empty-state", "Todavía no hay alumnos con cuenta."));
+    }
+
+    members.forEach(function (m) {
+      var row = el("div", "member");
+      var info = el("div");
+      info.appendChild(el("div", "member-name", m.name));
+      info.appendChild(el("div", "member-status " + m.status, STATUS_LABEL[m.status]));
+      row.appendChild(info);
+
+      var actions = el("div", "member-actions");
+      var btn;
+      if (m.status === "claimed") btn = el("button", "btn btn-primary btn-small", "Confirmar");
+      else if (m.status === "none") btn = el("button", "btn btn-small", "Marcar pagado");
+      else btn = el("button", "btn btn-small", "Quitar");
+      btn.type = "button";
+      btn.setAttribute("aria-label", btn.textContent + ": " + m.name);
+      btn.addEventListener("click", function () { coachSet(m, month, btn); });
+      actions.appendChild(btn);
+      row.appendChild(actions);
+      wrap.appendChild(row);
+    });
+
+    // Confirmed payments per month, last 12 months
+    var counts = el("section", "counts");
+    counts.appendChild(el("h2", "section-title", "Pagos confirmados por mes"));
+    var table = el("table");
+    for (var back = 0; back < 12; back++) {
+      var mISO = monthISO(back);
+      var n = S.pays.filter(function (p) { return p.month === mISO && p.status === "confirmed"; }).length;
+      var tr = el("tr", n === 0 ? "zero" : null);
+      tr.appendChild(el("td", null, MONTH_YEAR_FMT.format(isoToDate(mISO))));
+      tr.appendChild(el("td", "num", String(n)));
+      table.appendChild(tr);
+    }
+    counts.appendChild(table);
+    wrap.appendChild(counts);
+    return wrap;
+  }
+
+  async function coachSet(m, month, btn) {
+    btn.disabled = true;
+    var r;
+    if (m.status === "claimed") {
+      r = await sb.from("payments").update({ status: "confirmed" }).eq("user_id", m.id).eq("month", month);
+    } else if (m.status === "none") {
+      r = await sb.from("payments").insert({ user_id: m.id, month: month, status: "confirmed" });
+    } else {
+      r = await sb.from("payments").delete().eq("user_id", m.id).eq("month", month);
+    }
+    if (r.error) { fail(r.error); btn.disabled = false; return; }
+    await loadAll();
+  }
+
+  // ---------- Footer: account + privacy ----------
+  function renderFoot() {
+    foot.innerHTML = "";
+
+    if (S.me) {
+      var acc = el("div", "account");
+      var who = el("span");
+      who.appendChild(document.createTextNode("Has entrado como "));
+      who.appendChild(el("strong", null, S.me.display_name));
+      acc.appendChild(who);
+
+      var rename = el("button", "linkbtn", "Cambiar nombre");
+      rename.type = "button";
+      rename.addEventListener("click", async function () {
+        var name = window.prompt("Tu nombre", S.me.display_name);
+        if (name == null) return;
+        name = name.trim().slice(0, 40);
+        if (!name) return;
+        var r = await sb.from("profiles").update({ display_name: name }).eq("id", S.me.id);
+        if (r.error) { fail(r.error); return; }
+        await loadAll();
+      });
+      acc.appendChild(rename);
+
+      var out = el("button", "linkbtn", "Salir");
+      out.type = "button";
+      out.addEventListener("click", function () { sb.auth.signOut(); });
+      acc.appendChild(out);
+      foot.appendChild(acc);
+    } else if (S.session) {
+      var out2 = el("button", "linkbtn", "Salir");
+      out2.type = "button";
+      out2.addEventListener("click", function () { sb.auth.signOut(); });
+      foot.appendChild(out2);
+    }
+
+    var d = el("details");
+    d.appendChild(el("summary", null, "Privacidad"));
+    var pv = el("div", "privacy");
+    pv.innerHTML =
+      "<p><strong>Quién es responsable.</strong> Carlos, entrenador de Team Garra MMA (Instagram @carlos_garrapucho). Para cualquier cosa sobre tus datos, escríbele.</p>" +
+      "<p><strong>Qué guardamos.</strong> Tu email (solo para entrar), el nombre que elijas, a qué entrenos te apuntas y, cada mes, si has avisado de que pagaste la cuota y si Carlos lo ha confirmado. No guardamos importes ni datos bancarios: la cuota se paga a Carlos fuera de la app.</p>" +
+      "<p><strong>Para qué.</strong> Organizar los entrenos y llevar el control de cuotas del equipo.</p>" +
+      "<p><strong>Quién lo ve.</strong> Los compañeros con cuenta ven tu nombre en los entrenos a los que te apuntas. Tu estado de pago solo lo ves tú y Carlos.</p>" +
+      "<p><strong>Dónde y con quién.</strong> Los datos se guardan en Supabase, en servidores de Irlanda (UE). La web está alojada en Vercel y las fuentes tipográficas se cargan desde Google Fonts; ambos reciben tu dirección IP al abrir la página.</p>" +
+      "<p><strong>Cuánto tiempo.</strong> Los entrenos se borran a las 4 semanas y los estados de pago a los 12 meses. Tu cuenta se borra cuando lo pidas o cuando dejes el equipo.</p>" +
+      "<p><strong>Tus derechos.</strong> Puedes pedir a Carlos ver, corregir o borrar tus datos. Si no estás conforme, puedes reclamar ante la Agencia Española de Protección de Datos (aepd.es).</p>";
+    d.appendChild(pv);
+    foot.appendChild(d);
+
+    foot.appendChild(el("div", "made", "Hecho para Team Garra MMA"));
+  }
+
+  // ---------- Boot ----------
+  sb.auth.onAuthStateChange(function (event, session) {
+    S.session = session;
+    if (event === "SIGNED_OUT") { S.sent = false; S.view = "sessions"; S.payBack = 0; }
+    if (event === "TOKEN_REFRESHED" || event === "USER_UPDATED") return;
+    setTimeout(route, 0);
+  });
+
+  document.addEventListener("visibilitychange", function () {
+    if (document.visibilityState === "visible" && S.me) loadAll();
+  });
 })();
 </script>
 
